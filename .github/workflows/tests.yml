@@ -32,6 +32,8 @@ jobs:
         run: sh extras/juxtopposed/ci/unit-tests.sh
 
   update-signature:
+    # Forks have no releases signed with the upstream publisher's key.
+    if: github.repository == 'KuchiSofts/vlc-redesign'
     runs-on: windows-2022
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7

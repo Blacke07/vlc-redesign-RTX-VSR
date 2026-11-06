@@ -16,6 +16,12 @@ san="-fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-fram
 export ASAN_OPTIONS=detect_leaks=1:abort_on_error=1
 export UBSAN_OPTIONS=print_stacktrace=1
 
+echo "== performance settings"
+g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. $(pkg-config --cflags Qt6Core) \
+    extras/juxtopposed/performance-settings-test.cpp \
+    $(pkg-config --libs Qt6Core) -o "$out/performance-settings"
+"$out/performance-settings"
+
 echo "== subtitle cues"
 g++ -std=c++17 -O1 -Wall -Wextra $san -I. extras/juxtopposed/subtitle-cues-parser.cpp \
     modules/gui/qt/player/subtitle_cues_parser.cpp -o "$out/subtitle-cues-parser"
