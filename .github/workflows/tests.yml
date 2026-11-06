@@ -11,7 +11,7 @@ name: Tests
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, feat/rtx-vsr-toggle]
   workflow_dispatch:
 
 permissions:
